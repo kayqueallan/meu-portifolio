@@ -1,8 +1,9 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
-import Resume from "@/components/Resume";
+import ResumeDocument from "@/components/ResumeDocument";
 import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -12,8 +13,9 @@ const Index = () => {
       <main>
         <Hero />
         <Experience />
-        <Resume />
+        <ResumeDocument />
         <Projects />
+        <Contact />
       </main>
       <Footer />
     </div>

@@ -10,16 +10,34 @@ const Hero = () => {
   };
 
   return (
-    <section id="about" className="min-h-screen flex items-center bg-gradient-to-br from-hero-bg to-primary-muted relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent z-10" />
+    <section id="about" className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-hero-bg to-section-bg" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10 animate-gradient" 
+           style={{ background: 'var(--gradient-animated)' }} />
+      
+      {/* Floating Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-primary/20 rounded-full animate-particles"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 20}s`,
+              animationDuration: `${15 + Math.random() * 10}s`
+            }}
+          />
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 py-20 relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <div className="space-y-8 animate-fade-in">
             <div className="space-y-4">
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                 <span className="block text-foreground">Olá, eu sou</span>
-                <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-glow">
                   Desenvolvedor
                 </span>
               </h1>
@@ -33,7 +51,7 @@ const Hero = () => {
               <Button 
                 size="lg"
                 onClick={() => scrollToSection('projects')}
-                className="bg-gradient-to-r from-primary to-accent hover:shadow-medium transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 hover:scale-105 animate-glow"
               >
                 Ver Projetos
               </Button>
@@ -43,27 +61,23 @@ const Hero = () => {
                 onClick={() => scrollToSection('resume')}
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
-                Download CV
+                Ver Currículo
               </Button>
             </div>
           </div>
           
-          <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-strong">
+          <div className="relative animate-float">
+            <div className="relative rounded-2xl overflow-hidden shadow-glow">
               <img 
                 src={heroImage} 
                 alt="Workspace desenvolvedor" 
                 className="w-full h-[500px] object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" />
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-20 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
     </section>
   );
 };
