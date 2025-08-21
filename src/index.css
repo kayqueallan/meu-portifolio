@@ -8,38 +8,38 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme by default */
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
+    /* Pure black theme */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
 
-    --card: 222 84% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222 84% 8%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 217 91% 59%;
-    --primary-foreground: 222 84% 5%;
-    --primary-muted: 217 91% 15%;
+    --primary: 200 100% 70%;
+    --primary-foreground: 0 0% 0%;
+    --primary-muted: 200 100% 20%;
 
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 280 100% 70%;
+    --accent-foreground: 0 0% 0%;
 
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217 32% 20%;
-    --input: 217 32% 20%;
-    --ring: 217 91% 59%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 200 100% 70%;
 
-    --hero-bg: 222 84% 3%;
-    --section-bg: 222 84% 7%;
+    --hero-bg: 0 0% 0%;
+    --section-bg: 0 0% 2%;
     
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--hero-bg)), hsl(var(--primary-muted)));
