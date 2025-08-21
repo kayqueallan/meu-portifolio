@@ -56,6 +56,16 @@ const Header = () => {
               Currículo
             </Link>
             <Link 
+              to="/grade-curricular"
+              className={`transition-colors story-link ${
+                location.pathname === '/grade-curricular' 
+                  ? 'text-primary' 
+                  : 'text-foreground/80 hover:text-primary'
+              }`}
+            >
+              Grade Curricular
+            </Link>
+            <Link 
               to="/projetos"
               className={`transition-colors story-link ${
                 location.pathname === '/projetos' 

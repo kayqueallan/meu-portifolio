@@ -55,6 +55,10 @@ export default {
 				},
 				'hero-bg': 'hsl(var(--hero-bg))',
 				'section-bg': 'hsl(var(--section-bg))',
+				orange: {
+					DEFAULT: 'hsl(var(--orange))',
+					muted: 'hsl(var(--orange-muted))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

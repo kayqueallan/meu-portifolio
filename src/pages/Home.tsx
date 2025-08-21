@@ -1,122 +1,99 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
 import codingGif from "@/assets/coding-background.gif";
 import { Link } from "react-router-dom";
+import { Github, Linkedin, Twitter, MapPin } from "lucide-react";
 
 const Home = () => {
-  const technologies = [
-    { name: "JavaScript", years: "+5 anos" },
-    { name: "React", years: "4 anos" },
-    { name: "Node.js", years: "3 anos" },
-    { name: "TypeScript", years: "3 anos" },
-    { name: "Python", years: "2 anos" },
-    { name: "PostgreSQL", years: "3 anos" },
-    { name: "Docker", years: "2 anos" },
-    { name: "AWS", years: "2 anos" },
-    { name: "Next.js", years: "2 anos" },
-    { name: "Tailwind CSS", years: "3 anos" },
+  const socialLinks = [
+    { name: "LinkedIn", icon: Linkedin, url: "#" },
+    { name: "GitHub", icon: Github, url: "#" },
+    { name: "Twitter", icon: Twitter, url: "#" },
   ];
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-background relative overflow-hidden">
       {/* Animated GIF Background */}
       <div 
-        className="fixed inset-0 opacity-5 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 opacity-5 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${codingGif})`,
         }}
       />
       
-      {/* Left Sidebar */}
-      <aside className="w-80 bg-card/30 backdrop-blur-sm border-r border-border/20 p-8 flex flex-col items-center relative z-10">
-        {/* Profile Photo */}
-        <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 mb-6 animate-float">
-          <img 
-            src={profilePhoto} 
-            alt="Minha foto de perfil" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        
-        {/* Name and Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-primary mb-2">Seu Nome</h1>
-          <p className="text-sm text-muted-foreground uppercase tracking-wider">SOFTWARE ENGINEER</p>
-        </div>
-        
-        {/* Navigation Menu */}
-        <nav className="w-full space-y-4">
-          <Link 
-            to="/sobre" 
-            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
-          >
-            <span className="mr-3">—</span>
-            <span className="text-sm uppercase tracking-wide">SOBRE</span>
-          </Link>
-          <Link 
-            to="/experiencias" 
-            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
-          >
-            <span className="mr-3">—</span>
-            <span className="text-sm uppercase tracking-wide">EXPERIÊNCIA</span>
-          </Link>
-          <Link 
-            to="/curriculo" 
-            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
-          >
-            <span className="mr-3">—</span>
-            <span className="text-sm uppercase tracking-wide">CURRÍCULO</span>
-          </Link>
-          <Link 
-            to="/projetos" 
-            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
-          >
-            <span className="mr-3">—</span>
-            <span className="text-sm uppercase tracking-wide">PROJETOS</span>
-          </Link>
-        </nav>
-      </aside>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-background/90" />
       
       {/* Main Content */}
-      <main className="flex-1 p-12 relative z-10">
-        <div className="max-w-4xl">
-          <div className="mb-12">
-            <h2 className="text-5xl font-bold text-foreground mb-8">
-              Olá! Eu sou Desenvolvedor. <span className="inline-block animate-bounce">👋</span>
-            </h2>
+      <div className="relative z-10 min-h-screen flex items-center">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-              <p>
-                Minha jornada no mundo digital começou há alguns anos, quando descobri minha paixão por criar soluções inovadoras e experiências digitais excepcionais. 
-                Isso despertou meu interesse por tecnologia e comunidades online.
-              </p>
+            {/* Left Column - Text Content */}
+            <div className="space-y-8">
+              <div>
+                <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-4">
+                  Seu Nome
+                </h1>
+                <h2 className="text-2xl lg:text-3xl text-primary font-semibold mb-6">
+                  MERN Full Stack Expert
+                </h2>
+              </div>
               
-              <p>
-                Poucos anos depois, mergulhei no desenvolvimento web e mobile, e desde então tenho me dedicado a criar aplicações robustas e escaláveis. 
-                Ao longo dos anos, construí e mantive diversos projetos, desde pequenas aplicações até <span className="text-primary font-semibold">sistemas complexos de grande escala</span>, 
-                atendendo milhares de usuários ativos.
-              </p>
-              
-              <p>
-                Atualmente, estou focado em avançar minha carreira como Engenheiro de Software, especializando-me em tecnologias modernas e metodologias ágeis, 
-                canalizando minhas habilidades e experiência para novos desafios e projetos empolgantes.
-              </p>
+              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  Sou um desenvolvedor full stack especializado em MERN com paixão por transformar visões em realidade digital.
+                </p>
+                
+                <p>
+                  Como desenvolvedor de software experiente com mais de 5 anos de experiência, sirvo a indústria como especialista freelancer. 
+                  Minha paixão está em aproveitar a tecnologia para resolver problemas complexos e impulsionar resultados positivos de negócios. 
+                  Com expertise em várias linguagens, ferramentas e frameworks, foco em entregar resultados de alta qualidade no prazo e ajudar meus clientes a vencer.
+                </p>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-5 h-5 text-primary" />
+                <span>São Paulo, Brasil</span>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex flex-wrap gap-6">
+                {socialLinks.map((social) => (
+                  <Link
+                    key={social.name}
+                    to={social.url}
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+                  >
+                    <social.icon className="w-5 h-5" />
+                    <span className="text-sm font-medium">{social.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column - Profile Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                {/* Gradient Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/10 rounded-2xl blur-xl transform rotate-6"></div>
+                
+                {/* Profile Photo Container */}
+                <div className="relative w-80 h-96 lg:w-96 lg:h-[480px] rounded-2xl overflow-hidden border border-border/20 bg-gradient-to-br from-primary/20 to-accent/20 animate-float">
+                  <img 
+                    src={profilePhoto} 
+                    alt="Foto de perfil profissional" 
+                    className="w-full h-full object-cover"
+                  />
+                  
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
+                </div>
+              </div>
             </div>
           </div>
-          
-          {/* Technology Tags */}
-          <div className="flex flex-wrap gap-3">
-            {technologies.map((tech) => (
-              <div
-                key={tech.name}
-                className="bg-primary/10 border border-primary/20 rounded-md px-4 py-2 hover:bg-primary/20 transition-colors duration-200"
-              >
-                <span className="text-primary font-medium text-sm">{tech.name}</span>
-                <span className="text-muted-foreground text-xs ml-2">{tech.years}</span>
-              </div>
-            ))}
-          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
