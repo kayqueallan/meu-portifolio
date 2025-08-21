@@ -93,7 +93,7 @@ const Home = () => {
           </div>
 
           {/* Specialties Section */}
-          <div className="mt-20 space-y-16">
+          <div className="mt-12 space-y-12">
             <div className="text-center">
               <h2 className="text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -103,42 +103,37 @@ const Home = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
             </div>
             
-            <div className="flex justify-center">
-              <div className="space-y-6 max-w-4xl">
-                <h3 className="text-2xl font-semibold text-foreground mb-6 text-center">Tecnologias</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Code className="w-6 h-6 text-primary" />
-                      <h4 className="text-lg font-medium text-primary">Frontend</h4>
-                    </div>
-                    <p className="text-muted-foreground text-sm">React, TypeScript, Next.js, Tailwind CSS</p>
-                  </div>
-                  
-                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Server className="w-6 h-6 text-accent" />
-                      <h4 className="text-lg font-medium text-accent">Backend</h4>
-                    </div>
-                    <p className="text-muted-foreground text-sm">Node.js, Python, Express, APIs REST</p>
-                  </div>
-                  
-                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Database className="w-6 h-6 text-primary" />
-                      <h4 className="text-lg font-medium text-primary">Database</h4>
-                    </div>
-                    <p className="text-muted-foreground text-sm">PostgreSQL, MongoDB, Redis</p>
-                  </div>
-                  
-                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Palette className="w-6 h-6 text-accent" />
-                      <h4 className="text-lg font-medium text-accent">Design</h4>
-                    </div>
-                    <p className="text-muted-foreground text-sm">UI/UX, Figma, Design Systems</p>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-3">
+                  <Code className="w-6 h-6 text-primary" />
+                  <h4 className="text-lg font-medium text-primary">Frontend</h4>
                 </div>
+                <p className="text-muted-foreground text-sm">React, TypeScript, Next.js, Tailwind CSS</p>
+              </div>
+              
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-3">
+                  <Server className="w-6 h-6 text-accent" />
+                  <h4 className="text-lg font-medium text-accent">Backend</h4>
+                </div>
+                <p className="text-muted-foreground text-sm">Node.js, Python, Express, APIs REST</p>
+              </div>
+              
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-3">
+                  <Database className="w-6 h-6 text-primary" />
+                  <h4 className="text-lg font-medium text-primary">Database</h4>
+                </div>
+                <p className="text-muted-foreground text-sm">PostgreSQL, MongoDB, Redis</p>
+              </div>
+              
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-3">
+                  <Palette className="w-6 h-6 text-accent" />
+                  <h4 className="text-lg font-medium text-accent">Design</h4>
+                </div>
+                <p className="text-muted-foreground text-sm">UI/UX, Figma, Design Systems</p>
               </div>
             </div>
           </div>

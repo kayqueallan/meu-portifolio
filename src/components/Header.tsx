@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Code2 } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const Header = () => {
@@ -23,8 +23,13 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 py-4">
         <nav className="flex justify-between items-center">
-          <Link to="/" className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-glow">
-            Kayque
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="p-2 rounded-lg bg-gradient-to-r from-primary to-accent group-hover:shadow-glow transition-all duration-300">
+              <Code2 className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Kayque
+            </span>
           </Link>
           
           <div className="hidden md:flex space-x-8">
