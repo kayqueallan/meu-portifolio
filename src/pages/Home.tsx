@@ -1,92 +1,122 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
 import codingGif from "@/assets/coding-background.gif";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const technologies = [
+    { name: "JavaScript", years: "+5 anos" },
+    { name: "React", years: "4 anos" },
+    { name: "Node.js", years: "3 anos" },
+    { name: "TypeScript", years: "3 anos" },
+    { name: "Python", years: "2 anos" },
+    { name: "PostgreSQL", years: "3 anos" },
+    { name: "Docker", years: "2 anos" },
+    { name: "AWS", years: "2 anos" },
+    { name: "Next.js", years: "2 anos" },
+    { name: "Tailwind CSS", years: "3 anos" },
+  ];
+
   return (
-    <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen bg-background flex">
       {/* Animated GIF Background */}
       <div 
-        className="absolute inset-0 opacity-20 bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0 opacity-5 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${codingGif})`,
         }}
       />
       
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-background/80" />
+      {/* Left Sidebar */}
+      <aside className="w-80 bg-card/30 backdrop-blur-sm border-r border-border/20 p-8 flex flex-col items-center relative z-10">
+        {/* Profile Photo */}
+        <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 mb-6 animate-float">
+          <img 
+            src={profilePhoto} 
+            alt="Minha foto de perfil" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Name and Title */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl font-bold text-primary mb-2">Seu Nome</h1>
+          <p className="text-sm text-muted-foreground uppercase tracking-wider">SOFTWARE ENGINEER</p>
+        </div>
+        
+        {/* Navigation Menu */}
+        <nav className="w-full space-y-4">
+          <Link 
+            to="/sobre" 
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
+          >
+            <span className="mr-3">—</span>
+            <span className="text-sm uppercase tracking-wide">SOBRE</span>
+          </Link>
+          <Link 
+            to="/experiencias" 
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
+          >
+            <span className="mr-3">—</span>
+            <span className="text-sm uppercase tracking-wide">EXPERIÊNCIA</span>
+          </Link>
+          <Link 
+            to="/curriculo" 
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
+          >
+            <span className="mr-3">—</span>
+            <span className="text-sm uppercase tracking-wide">CURRÍCULO</span>
+          </Link>
+          <Link 
+            to="/projetos" 
+            className="flex items-center text-muted-foreground hover:text-primary transition-colors py-2 border-b border-border/10 hover:border-primary/30"
+          >
+            <span className="mr-3">—</span>
+            <span className="text-sm uppercase tracking-wide">PROJETOS</span>
+          </Link>
+        </nav>
+      </aside>
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          {/* Profile Photo */}
-          <div className="relative inline-block">
-            <div className="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-primary shadow-glow animate-float">
-              <img 
-                src={profilePhoto} 
-                alt="Minha foto de perfil" 
-                className="w-full h-full object-cover"
-              />
+      {/* Main Content */}
+      <main className="flex-1 p-12 relative z-10">
+        <div className="max-w-4xl">
+          <div className="mb-12">
+            <h2 className="text-5xl font-bold text-foreground mb-8">
+              Olá! Eu sou Desenvolvedor. <span className="inline-block animate-bounce">👋</span>
+            </h2>
+            
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Minha jornada no mundo digital começou há alguns anos, quando descobri minha paixão por criar soluções inovadoras e experiências digitais excepcionais. 
+                Isso despertou meu interesse por tecnologia e comunidades online.
+              </p>
+              
+              <p>
+                Poucos anos depois, mergulhei no desenvolvimento web e mobile, e desde então tenho me dedicado a criar aplicações robustas e escaláveis. 
+                Ao longo dos anos, construí e mantive diversos projetos, desde pequenas aplicações até <span className="text-primary font-semibold">sistemas complexos de grande escala</span>, 
+                atendendo milhares de usuários ativos.
+              </p>
+              
+              <p>
+                Atualmente, estou focado em avançar minha carreira como Engenheiro de Software, especializando-me em tecnologias modernas e metodologias ágeis, 
+                canalizando minhas habilidades e experiência para novos desafios e projetos empolgantes.
+              </p>
             </div>
           </div>
           
-          {/* Introduction */}
-          <div className="space-y-6">
-            <h1 className="text-6xl md:text-8xl font-bold">
-              <span className="block text-foreground mb-4">Olá!</span>
-              <span className="block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-glow">
-                Sou Desenvolvedor
-              </span>
-            </h1>
-            
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Bem-vindo ao meu portfólio digital. Aqui você encontrará informações sobre minha trajetória profissional, projetos e como entrar em contato comigo.
-            </p>
-          </div>
-          
-          {/* Navigation Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8">
-            <Link to="/sobre">
-              <Button 
-                size="lg"
-                className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 hover:scale-105"
+          {/* Technology Tags */}
+          <div className="flex flex-wrap gap-3">
+            {technologies.map((tech) => (
+              <div
+                key={tech.name}
+                className="bg-primary/10 border border-primary/20 rounded-md px-4 py-2 hover:bg-primary/20 transition-colors duration-200"
               >
-                Sobre Mim
-              </Button>
-            </Link>
-            
-            <Link to="/experiencias">
-              <Button 
-                size="lg"
-                variant="outline"
-                className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-              >
-                Experiências
-              </Button>
-            </Link>
-            
-            <Link to="/curriculo">
-              <Button 
-                size="lg"
-                variant="outline"
-                className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-              >
-                Currículo
-              </Button>
-            </Link>
-            
-            <Link to="/projetos">
-              <Button 
-                size="lg"
-                variant="outline"
-                className="w-full border-muted-foreground text-muted-foreground hover:bg-muted-foreground hover:text-background transition-all duration-300"
-              >
-                Projetos
-              </Button>
-            </Link>
+                <span className="text-primary font-medium text-sm">{tech.name}</span>
+                <span className="text-muted-foreground text-xs ml-2">{tech.years}</span>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
