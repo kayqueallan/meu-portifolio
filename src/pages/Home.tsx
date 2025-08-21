@@ -92,38 +92,20 @@ const Home = () => {
             </div>
           </div>
 
-          {/* About Section */}
+          {/* Specialties Section */}
           <div className="mt-20 space-y-16">
             <div className="text-center">
               <h2 className="text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Sobre Mim
+                  Especialidades
                 </span>
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
             </div>
             
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/20 shadow-soft">
-                  <h3 className="text-2xl font-semibold text-foreground mb-4">Minha Jornada</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Sou um desenvolvedor apaixonado por tecnologia e inovação. Com anos de experiência no desenvolvimento de soluções digitais, 
-                    dedico-me a criar experiências excepcionais que combinam funcionalidade, performance e design elegante.
-                  </p>
-                </div>
-                
-                <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/20 shadow-soft">
-                  <h3 className="text-2xl font-semibold text-foreground mb-4">Minha Paixão</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Acredito que a tecnologia tem o poder de transformar vidas e negócios. Por isso, busco constantemente me atualizar 
-                    com as mais recentes tendências do mercado, sempre focado em entregar soluções que realmente façam a diferença.
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-foreground mb-6">Especialidades</h3>
+            <div className="flex justify-center">
+              <div className="space-y-6 max-w-4xl">
+                <h3 className="text-2xl font-semibold text-foreground mb-6 text-center">Tecnologias</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
                     <div className="flex items-center gap-3 mb-3">

@@ -24,10 +24,20 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex justify-between items-center">
           <Link to="/" className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-glow">
-            Portfolio
+            Kayque
           </Link>
           
           <div className="hidden md:flex space-x-8">
+            <Link 
+              to="/"
+              className={`transition-colors story-link ${
+                location.pathname === '/' 
+                  ? 'text-primary' 
+                  : 'text-foreground/80 hover:text-primary'
+              }`}
+            >
+              Home
+            </Link>
             <Link 
               to="/curriculo"
               className={`transition-colors story-link ${
