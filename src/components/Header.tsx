@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,26 +29,6 @@ const Header = () => {
           
           <div className="hidden md:flex space-x-8">
             <Link 
-              to="/sobre"
-              className={`transition-colors story-link ${
-                location.pathname === '/sobre' 
-                  ? 'text-primary' 
-                  : 'text-foreground/80 hover:text-primary'
-              }`}
-            >
-              Sobre
-            </Link>
-            <Link 
-              to="/experiencias"
-              className={`transition-colors story-link ${
-                location.pathname === '/experiencias' 
-                  ? 'text-primary' 
-                  : 'text-foreground/80 hover:text-primary'
-              }`}
-            >
-              Experiência
-            </Link>
-            <Link 
               to="/curriculo"
               className={`transition-colors story-link ${
                 location.pathname === '/curriculo' 
@@ -56,14 +39,14 @@ const Header = () => {
               Currículo
             </Link>
             <Link 
-              to="/grade-curricular"
+              to="/experiencias"
               className={`transition-colors story-link ${
-                location.pathname === '/grade-curricular' 
+                location.pathname === '/experiencias' 
                   ? 'text-primary' 
                   : 'text-foreground/80 hover:text-primary'
               }`}
             >
-              Grade Curricular
+              Experiência
             </Link>
             <Link 
               to="/projetos"
@@ -77,13 +60,26 @@ const Header = () => {
             </Link>
           </div>
 
-          <Link to="/contato">
-            <Button 
-              className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 hover:scale-105"
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              className="hover:bg-muted"
             >
-              Contato
+              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
             </Button>
-          </Link>
+            
+            <Link to="/contato">
+              <Button 
+                className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 hover:scale-105"
+              >
+                Contato
+              </Button>
+            </Link>
+          </div>
         </nav>
       </div>
     </header>

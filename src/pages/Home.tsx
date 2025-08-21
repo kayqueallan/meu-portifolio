@@ -1,7 +1,7 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
 import codingGif from "@/assets/coding-background.gif";
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Twitter, MapPin } from "lucide-react";
+import { Github, Linkedin, Twitter, MapPin, Code, Palette, Server, Database } from "lucide-react";
 
 const Home = () => {
   const socialLinks = [
@@ -24,9 +24,9 @@ const Home = () => {
       <div className="absolute inset-0 bg-background/90" />
       
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="relative z-10 min-h-screen">
+        <div className="container mx-auto px-6 lg:px-12 py-20">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen">
             
             {/* Left Column - Text Content */}
             <div className="space-y-8">
@@ -34,7 +34,7 @@ const Home = () => {
                 <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-4">
                   Seu Nome
                 </h1>
-                <h2 className="text-2xl lg:text-3xl text-primary font-semibold mb-6">
+                <h2 className="text-2xl lg:text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold mb-6">
                   MERN Full Stack Expert
                 </h2>
               </div>
@@ -46,8 +46,7 @@ const Home = () => {
                 
                 <p>
                   Como desenvolvedor de software experiente com mais de 5 anos de experiência, sirvo a indústria como especialista freelancer. 
-                  Minha paixão está em aproveitar a tecnologia para resolver problemas complexos e impulsionar resultados positivos de negócios. 
-                  Com expertise em várias linguagens, ferramentas e frameworks, foco em entregar resultados de alta qualidade no prazo e ajudar meus clientes a vencer.
+                  Minha paixão está em aproveitar a tecnologia para resolver problemas complexos e impulsionar resultados positivos de negócios.
                 </p>
               </div>
 
@@ -63,7 +62,7 @@ const Home = () => {
                   <Link
                     key={social.name}
                     to={social.url}
-                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200"
+                    className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105"
                   >
                     <social.icon className="w-5 h-5" />
                     <span className="text-sm font-medium">{social.name}</span>
@@ -79,7 +78,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-accent/20 to-primary/10 rounded-2xl blur-xl transform rotate-6"></div>
                 
                 {/* Profile Photo Container */}
-                <div className="relative w-80 h-96 lg:w-96 lg:h-[480px] rounded-2xl overflow-hidden border border-border/20 bg-gradient-to-br from-primary/20 to-accent/20 animate-float">
+                <div className="relative w-80 h-96 lg:w-96 lg:h-[480px] rounded-2xl overflow-hidden border border-border/20 bg-gradient-to-br from-primary/20 to-accent/20 animate-float shadow-strong">
                   <img 
                     src={profilePhoto} 
                     alt="Foto de perfil profissional" 
@@ -88,6 +87,75 @@ const Home = () => {
                   
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* About Section */}
+          <div className="mt-20 space-y-16">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  Sobre Mim
+                </span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8">
+                <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/20 shadow-soft">
+                  <h3 className="text-2xl font-semibold text-foreground mb-4">Minha Jornada</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Sou um desenvolvedor apaixonado por tecnologia e inovação. Com anos de experiência no desenvolvimento de soluções digitais, 
+                    dedico-me a criar experiências excepcionais que combinam funcionalidade, performance e design elegante.
+                  </p>
+                </div>
+                
+                <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/20 shadow-soft">
+                  <h3 className="text-2xl font-semibold text-foreground mb-4">Minha Paixão</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Acredito que a tecnologia tem o poder de transformar vidas e negócios. Por isso, busco constantemente me atualizar 
+                    com as mais recentes tendências do mercado, sempre focado em entregar soluções que realmente façam a diferença.
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold text-foreground mb-6">Especialidades</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Code className="w-6 h-6 text-primary" />
+                      <h4 className="text-lg font-medium text-primary">Frontend</h4>
+                    </div>
+                    <p className="text-muted-foreground text-sm">React, TypeScript, Next.js, Tailwind CSS</p>
+                  </div>
+                  
+                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Server className="w-6 h-6 text-accent" />
+                      <h4 className="text-lg font-medium text-accent">Backend</h4>
+                    </div>
+                    <p className="text-muted-foreground text-sm">Node.js, Python, Express, APIs REST</p>
+                  </div>
+                  
+                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Database className="w-6 h-6 text-primary" />
+                      <h4 className="text-lg font-medium text-primary">Database</h4>
+                    </div>
+                    <p className="text-muted-foreground text-sm">PostgreSQL, MongoDB, Redis</p>
+                  </div>
+                  
+                  <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Palette className="w-6 h-6 text-accent" />
+                      <h4 className="text-lg font-medium text-accent">Design</h4>
+                    </div>
+                    <p className="text-muted-foreground text-sm">UI/UX, Figma, Design Systems</p>
+                  </div>
                 </div>
               </div>
             </div>

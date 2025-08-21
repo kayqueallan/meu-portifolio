@@ -7,43 +7,43 @@ All colors MUST be HSL.
 */
 
 @layer base {
-:root {
-    /* Pure black theme with orange accents for academics */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
+  :root {
+    /* Modern gray theme with purple accent - Light Mode */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 12%;
 
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
 
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 200 100% 70%;
-    --primary-foreground: 0 0% 0%;
-    --primary-muted: 200 100% 20%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 98%;
+    --primary-muted: 262 83% 88%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 0 0% 8%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 280 100% 70%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 200 98% 39%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62% 50%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 200 100% 70%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 262 83% 58%;
 
-    --hero-bg: 0 0% 0%;
-    --section-bg: 0 0% 2%;
+    --hero-bg: 0 0% 98%;
+    --section-bg: 0 0% 96%;
     
     /* Orange theme for academic pages */
     --orange: 28 100% 60%;
-    --orange-muted: 28 100% 20%;
+    --orange-muted: 28 100% 90%;
     
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--hero-bg)), hsl(var(--primary-muted)));
@@ -51,15 +51,15 @@ All colors MUST be HSL.
     --gradient-animated: linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)), hsl(var(--accent)));
     --gradient-orange: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--orange-muted)));
 
-    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.3);
-    --shadow-medium: 0 8px 30px -4px hsl(var(--primary) / 0.4);
-    --shadow-strong: 0 12px 40px -8px hsl(var(--primary) / 0.5);
-    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.15);
+    --shadow-medium: 0 8px 30px -4px hsl(var(--primary) / 0.2);
+    --shadow-strong: 0 12px 40px -8px hsl(var(--primary) / 0.25);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -72,25 +72,53 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 8%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 8%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 59%;
-    --primary-foreground: 222 84% 5%;
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 142 76% 36%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 32% 20%;
-    --input: 217 32% 20%;
-    --ring: 217 91% 59%;
+    /* Modern gray theme with purple accent - Dark Mode */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 262 83% 68%;
+    --primary-foreground: 0 0% 12%;
+    --primary-muted: 262 83% 25%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 200 98% 55%;
+    --accent-foreground: 0 0% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 262 83% 68%;
+
+    --hero-bg: 0 0% 8%;
+    --section-bg: 0 0% 10%;
+
+    --orange: 28 100% 65%;
+    --orange-muted: 28 100% 25%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--hero-bg)), hsl(var(--primary-muted)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-animated: linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-orange: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--orange-muted)));
+
+    --shadow-soft: 0 4px 20px -2px hsl(var(--primary) / 0.3);
+    --shadow-medium: 0 8px 30px -4px hsl(var(--primary) / 0.4);
+    --shadow-strong: 0 12px 40px -8px hsl(var(--primary) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
