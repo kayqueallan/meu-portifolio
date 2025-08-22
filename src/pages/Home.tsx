@@ -1,14 +1,37 @@
+import { useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import codingGif from "@/assets/coding-background.gif";
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Twitter, MapPin, Code, Palette, Server, Database } from "lucide-react";
+import { Github, Linkedin, Twitter, MapPin, Code, Palette, Server, Database, Instagram, Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Home = () => {
+  const [language, setLanguage] = useState<'pt' | 'en'>('pt');
+  
   const socialLinks = [
-    { name: "LinkedIn", icon: Linkedin, url: "#" },
-    { name: "GitHub", icon: Github, url: "#" },
-    { name: "Twitter", icon: Twitter, url: "#" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/kayqueallan/" },
+    { name: "GitHub", icon: Github, url: "https://github.com/kayqueallan" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/rkayque_/" },
   ];
+
+  const content = {
+    pt: {
+      title: "Estudante de Engenharia de Software.",
+      greeting: "Olá! Sou Kayque Allan, estudante do 4º período de Engenharia de Software na PUC Minas, com grande interesse em programação e design digital. Participo de projetos, cursos e hackathons para desenvolver minhas habilidades e buscar soluções criativas e funcionais.",
+      about: "Atualmente, também estudo inglês e espanhol para ampliar minhas oportunidades de colaboração no mercado global. Aqui você encontra alguns dos meus projetos e experiências sinta-se à vontade para conhecer!",
+      location: "Minas Gerais, Brasil",
+      specialties: "Especialidades",
+      languageButton: "EN"
+    },
+    en: {
+      title: "Software Engineering Student.",
+      greeting: "Hello! I'm Kayque Allan, a 4th semester Software Engineering student at PUC Minas, with great interest in programming and digital design. I participate in projects, courses and hackathons to develop my skills and seek creative and functional solutions.",
+      about: "Currently, I also study English and Spanish to expand my global collaboration opportunities in the market. Here you can find some of my projects and experiences, feel free to explore!",
+      location: "Minas Gerais, Brazil",
+      specialties: "Specialties",
+      languageButton: "PT"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background relative overflow-hidden">
@@ -25,35 +48,45 @@ const Home = () => {
       
       {/* Main Content */}
       <div className="relative z-10 min-h-screen">
-        <div className="container mx-auto px-6 lg:px-12 py-20">
+        <div className="container mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen">
             
             {/* Left Column - Text Content */}
             <div className="space-y-8">
               <div>
                 <h1 className="text-5xl lg:text-6xl font-bold text-foreground mb-4">
-                  Seu Nome
+                  Kayque Allan
                 </h1>
-                <h2 className="text-2xl lg:text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold mb-6">
-                  MERN Full Stack Expert
+                <h2 className="text-2xl lg:text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold mb-4">
+                  {content[language].title}
                 </h2>
+                
+                {/* Language Toggle Button */}
+                <Button
+                  onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2 hover:scale-105 transition-all duration-300"
+                >
+                  <Globe className="w-4 h-4" />
+                  {content[language].languageButton}
+                </Button>
               </div>
               
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  Sou um desenvolvedor full stack especializado em MERN com paixão por transformar visões em realidade digital.
+                  {content[language].greeting}
                 </p>
                 
                 <p>
-                  Como desenvolvedor de software experiente com mais de 5 anos de experiência, sirvo a indústria como especialista freelancer. 
-                  Minha paixão está em aproveitar a tecnologia para resolver problemas complexos e impulsionar resultados positivos de negócios.
+                  {content[language].about}
                 </p>
               </div>
 
               {/* Location */}
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span>São Paulo, Brasil</span>
+                <span>{content[language].location}</span>
               </div>
 
               {/* Social Links */}
@@ -93,47 +126,42 @@ const Home = () => {
           </div>
 
           {/* Specialties Section */}
-          <div className="mt-12 space-y-12">
+          <div className="-mt-32 space-y-1">
             <div className="text-center">
-              <h2 className="text-4xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Especialidades
-                </span>
-              </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
+                           
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                <div className="flex items-center gap-3 mb-3">
-                  <Code className="w-6 h-6 text-primary" />
-                  <h4 className="text-lg font-medium text-primary">Frontend</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto py-12">
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-8 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <Code className="w-7 h-7 text-primary" />
+                  <h4 className="text-xl font-medium text-primary">Frontend</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">React, TypeScript, Next.js, Tailwind CSS</p>
+                <p className="text-muted-foreground text-base">React, TypeScript, Next.js, Tailwind CSS</p>
               </div>
               
-              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                <div className="flex items-center gap-3 mb-3">
-                  <Server className="w-6 h-6 text-accent" />
-                  <h4 className="text-lg font-medium text-accent">Backend</h4>
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-8 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <Server className="w-7 h-7 text-accent" />
+                  <h4 className="text-xl font-medium text-accent">Backend</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">Node.js, Python, Express, APIs REST</p>
+                <p className="text-muted-foreground text-base">Node.js, Python, Express, APIs REST</p>
               </div>
               
-              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                <div className="flex items-center gap-3 mb-3">
-                  <Database className="w-6 h-6 text-primary" />
-                  <h4 className="text-lg font-medium text-primary">Database</h4>
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-8 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <Database className="w-7 h-7 text-primary" />
+                  <h4 className="text-xl font-medium text-primary">Database</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">PostgreSQL, MongoDB, Redis</p>
+                <p className="text-muted-foreground text-base">PostgreSQL, MongoDB, Redis</p>
               </div>
               
-              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-6 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
-                <div className="flex items-center gap-3 mb-3">
-                  <Palette className="w-6 h-6 text-accent" />
-                  <h4 className="text-lg font-medium text-accent">Design</h4>
+              <div className="bg-card/30 backdrop-blur-sm rounded-xl p-8 border border-border/20 hover:shadow-soft transition-all duration-300 hover:scale-105">
+                <div className="flex items-center gap-3 mb-4">
+                  <Palette className="w-7 h-7 text-accent" />
+                  <h4 className="text-xl font-medium text-accent">Design</h4>
                 </div>
-                <p className="text-muted-foreground text-sm">UI/UX, Figma, Design Systems</p>
+                <p className="text-muted-foreground text-base">UI/UX, Figma, Design Systems</p>
               </div>
             </div>
           </div>
@@ -144,3 +172,4 @@ const Home = () => {
 };
 
 export default Home;
+

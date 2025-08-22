@@ -1,73 +1,132 @@
-# Welcome to your Lovable project
+# Kayque Allan - Portfólio
 
-## Project info
+Este é um projeto de portfólio desenvolvido para o Laboratório de Desenvolvimento de Software.
 
-**URL**: https://lovable.dev/projects/89c5035a-81e8-4b00-9370-616ca30aca53
+## Tecnologias Utilizadas
 
-## How can I edit this code?
+Este projeto foi construído com as seguintes tecnologias:
 
-There are several ways of editing your application.
+- **Vite**: Um empacotador de módulos e ferramenta de desenvolvimento para projetos web modernos.
+- **TypeScript**: Um superconjunto tipado de JavaScript que compila para JavaScript puro.
+- **React**: Uma biblioteca JavaScript para construir interfaces de usuário.
+- **shadcn-ui**: Uma coleção de componentes de UI reusáveis construídos com Radix UI e Tailwind CSS.
+- **Tailwind CSS**: Um framework CSS utilitário para construir designs rapidamente.
 
-**Use Lovable**
+## Dependências e Bibliotecas/Frameworks
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/89c5035a-81e8-4b00-9370-616ca30aca53) and start prompting.
+As principais dependências e bibliotecas/frameworks utilizados neste projeto incluem:
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React**: Para a construção da interface do usuário.
+- **React Router DOM**: Para roteamento de páginas na aplicação.
+- **Vite**: Como ferramenta de construção e servidor de desenvolvimento.
+- **Tailwind CSS**: Para estilização.
+- **shadcn-ui**: Componentes de UI.
+- **ESLint**: Para linting de código.
+- **PostCSS**: Para transformação de CSS.
+- **TypeScript**: Para tipagem estática.
 
-**Use your preferred IDE**
+Para uma lista completa, consulte o arquivo `package.json`.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Estrutura de Diretórios do Projeto
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+A estrutura de diretórios do projeto está organizada da seguinte forma:
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+portfolio-tiagoba/
+  ├── public/                      # Arquivos estáticos (favicon, imagens placeholder, robots.txt)
+  ├── src/
+  │   ├── assets/                  # Imagens e outros recursos
+  │   ├── components/              # Componentes React reutilizáveis (Contact, Experience, Header, etc.)
+  │   │   └── ui/                  # Componentes de UI do shadcn-ui
+  │   ├── hooks/                   # Hooks personalizados do React
+  │   ├── lib/                     # Utilitários e funções auxiliares (utils.ts)
+  │   ├── pages/                   # Páginas principais da aplicação (Home, ProjectsPage, ContactPage, etc.)
+  │   ├── App.css                  # Estilos globais da aplicação
+  │   ├── App.tsx                  # Componente principal da aplicação
+  │   ├── index.css                # Estilos CSS de entrada
+  │   └── main.tsx                 # Ponto de entrada da aplicação
+  ├── .eslintrc.cjs                # Configurações do ESLint
+  ├── package.json                 # Metadados e dependências do projeto
+  ├── postcss.config.js            # Configurações do PostCSS
+  ├── tailwind.config.ts           # Configurações do Tailwind CSS
+  ├── tsconfig.json                # Configurações do TypeScript
+  ├── vite.config.ts               # Configurações do Vite
+  └── README.md                    # Este arquivo README
 ```
 
-**Edit a file directly in GitHub**
+## Instruções de Instalação e Execução Localmente
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Para configurar e executar o projeto localmente, siga os passos abaixo:
 
-**Use GitHub Codespaces**
+1.  **Clone o repositório:**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+    ```bash
+    git clone https://github.com/TiagoBoavAmaral/Portfolio-TiagoBA.git
+    cd portfolio-tiagoba
+    ```
 
-## What technologies are used for this project?
+2.  **Instale as dependências:**
 
-This project is built with:
+    ```bash
+    npm install
+    # ou
+    yarn install
+    # ou
+    pnpm install
+    # ou
+    bun install
+    ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+3.  **Execute o servidor de desenvolvimento:**
 
-## How can I deploy this project?
+    ```bash
+    npm run dev
+    # ou
+    yarn dev
+    # ou
+    pnpm dev
+    # ou
+    bun dev
+    ```
 
-Simply open [Lovable](https://lovable.dev/projects/89c5035a-81e8-4b00-9370-616ca30aca53) and click on Share -> Publish.
+    O aplicativo estará disponível em `http://localhost:8080` (ou outra porta disponível).
 
-## Can I connect a custom domain to my Lovable project?
+4.  **Construa para produção (opcional):**
 
-Yes, you can!
+    ```bash
+    npm run build
+    # ou
+    yarn build
+    # ou
+    pnpm build
+    # ou
+    bun build
+    ```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+    Isso irá gerar os arquivos estáticos na pasta `dist/`.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Link de Acesso para o Site Publicado na Nuvem
+
+O site está publicado e pode ser acessado através do seguinte link:
+
+[Tiago Boaventura Amaral - Portfólio Online](https://portfolio-tiagoba.vercel.app)
+
+## Wireframes
+
+**Home:**
+
+![Home](figmas/home.png)
+
+**Experiências:**
+
+![Experiencias](figmas/experienciass.png)
+
+**Projetos:**
+
+![Projetos](figmas/projetos.png)
+
+**Contatos:**
+
+![Contatos](figmas/contatos.png)
+
+---

@@ -1,145 +1,303 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download, Globe, Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { Download, Globe, Mail, Phone, MapPin, Github, Linkedin, Loader2 } from "lucide-react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const ResumeDocument = () => {
   const [language, setLanguage] = useState<'pt' | 'en'>('pt');
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+  const resumeRef = useRef<HTMLDivElement>(null);
 
-  const resumeData = {
-    pt: {
-      name: "João Silva",
-      title: "Desenvolvedor Full Stack Senior",
-      contact: {
-        email: "joao.silva@email.com",
-        phone: "+55 (11) 99999-9999",
-        location: "São Paulo, SP",
-        github: "github.com/joaosilva",
-        linkedin: "linkedin.com/in/joaosilva"
-      },
-      summary: "Desenvolvedor Full Stack com 5+ anos de experiência criando aplicações web modernas e escaláveis. Especializado em React, Node.js e tecnologias cloud. Apaixonado por código limpo, arquitetura sólida e experiência do usuário excepcional.",
-      experience: [
-        {
-          title: "Desenvolvedor Full Stack Senior",
-          company: "Tech Innovations Ltda",
-          period: "Jan 2022 - Presente",
-          description: [
-            "Liderança técnica de equipe de 5 desenvolvedores",
-            "Desenvolvimento de aplicações React com TypeScript",
-            "Implementação de APIs REST e GraphQL com Node.js",
-            "Deploy e manutenção de aplicações na AWS",
-            "Melhoria de performance que resultou em 40% menos tempo de carregamento"
-          ]
+    const resumeData = {
+      pt: {
+        name: "Kayque Allan",
+        title: "Estudante de Engenharia de Software",
+        contact: {
+          email: "kayqueallanf@gmail.com",
+          phone: "+55 (31) 99108-2537",
+          location: "Minas Gerais, SP",
+          github: "https://github.com/kayqueallan",
+          linkedin: "linkedin.com/in/kayqueallan"
         },
-        {
-          title: "Desenvolvedor Front-end Pleno",
-          company: "Digital Solutions",
-          period: "Mar 2020 - Dez 2021",
-          description: [
-            "Desenvolvimento de interfaces responsivas para 20+ clientes",
-            "Integração com APIs RESTful e implementação de estados globais",
-            "Otimização de performance e SEO",
-            "Mentoria de desenvolvedores juniores"
-          ]
+        summary: "Sou estudante de Engenharia de Software na PUC Minas, apaixonado por tecnologia e desenvolvimento. Tenho experiência em projetos acadêmicos e reais, atuando no front-end e back-end, com integração de banco de dados e APIs. Destaco-me pela facilidade de aprendizado, comprometimento, organização e trabalho em equipe, buscando sempre evoluir e criar soluções eficientes.",
+        
+        experience: [
+          {
+            title: "Sócio de Empreendimento – Autônomo",
+            company: "",
+            period: "2022 – 2023",
+            description: [
+              "Criação de artes visuais e gestão de tráfego pago para pequenas empresas.",
+              "Atendimento ao cliente, estratégias de marketing digital e branding.",
+              "Desenvolvimento de habilidades em design gráfico, comunicação e organização."
+            ]
+          }
+        ],
+
+        projects: [
+          {
+            name: "PettEmCasa - Sistema de Gerenciamento para Hotel Pet",
+            link: "https://github.com/kayqueallan",
+            year: 2025,
+            status: "Finalizado",
+            description: [
+              "Desenvolvimento de sistema completo para gerenciamento de um hotel pet.",
+              "Funcionalidades: cadastro de clientes e pets, reservas, login e painel administrativo.",
+              "Interface responsiva e intuitiva para administradores e clientes."
+            ],
+            technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"]
+          },
+          {
+            name: "Kallyer Transporte – Sistema de Gestão Empresarial",
+            link: "",
+            year: 2025,
+            status: "Em desenvolvimento",
+            description: [
+              "Sistema para empresa de transporte, com foco em controle interno e acesso facilitado aos serviços.",
+              "Funcionalidades em desenvolvimento: controle de viagens, gestão financeira por KM rodado e integração com painel administrativo."
+            ],
+            technologies: ["React", "CSS", "Tailwind CSS", "Node.js", "PostgreSQL", "API de rotas"]
+          }
+        ],
+    
+        education: [
+          {
+            degree: "Bacharelado em Engenharia de Software",
+            school: "Pontifícia Universidade Católica de Minas Gerais (PUC MINAS)",
+            period: "2023 - Atual",
+            details: "Foco em desenvolvimento de software com base sólida em programação, modelagem, testes, bancos de dados e computação em nuvem."
+          }
+        ],
+    
+        skills: {
+          frontend: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
+          backend: ["Java", "Node.js", "Python", "Spring Boot", "SQL", "PostgreSQL"],
+          tools: ["Git", "Docker", "AWS", "Figma"]
         },
-        {
-          title: "Desenvolvedor Junior",
-          company: "StartupTech",
-          period: "Jun 2019 - Fev 2020",
-          description: [
-            "Desenvolvimento de features para plataforma SaaS",
-            "Manutenção e correção de bugs em aplicações legacy",
-            "Participação ativa em metodologias ágeis (Scrum)"
-          ]
-        }
-      ],
-      education: [
-        {
-          degree: "Bacharelado em Ciência da Computação",
-          school: "Universidade de São Paulo (USP)",
-          period: "2015 - 2019",
-          details: "Formação sólida em algoritmos, estruturas de dados e engenharia de software"
-        }
-      ],
-      skills: {
-        frontend: ["React", "TypeScript", "Next.js", "Vue.js", "HTML5", "CSS3", "Tailwind CSS"],
-        backend: ["Node.js", "Python", "Express", "FastAPI", "PostgreSQL", "MongoDB"],
-        tools: ["Git", "Docker", "AWS", "Jest", "Cypress", "Figma"]
+    
+        languages: [
+          { language: "Português", level: "Nativo" },
+          { language: "Inglês", level: "Intermediario" },
+          { language: "Espanhol", level: "Básico" }
+        ],
+    
+        complementaryCourses: [
+          { name: "Desenvolvimento Web: HTML & CSS", provider: "B7Web", status: "Concluído" },
+          { name: "JavaScript", provider: "B7Web", status: "Concluído" },
+          { name: "React / TypeScript / Node.js", provider: "B7Web", status: "Em andamento" },
+          { name: "Java e Banco de Dados", provider: "DevDojo", status: "Concluído" },
+          { name: "Linux", provider: "Udemy", status: "Concluído" },
+          { name: "Inglês / Espanhol", provider: "Fluency Academy", status: "Em andamento" }
+        ],
       },
-      languages: [
-        { language: "Português", level: "Nativo" },
-        { language: "Inglês", level: "Avançado" },
-        { language: "Espanhol", level: "Intermediário" }
-      ]
-    },
-    en: {
-      name: "John Silva",
-      title: "Senior Full Stack Developer",
-      contact: {
-        email: "john.silva@email.com",
-        phone: "+55 (11) 99999-9999",
-        location: "São Paulo, SP, Brazil",
-        github: "github.com/johnsilva",
-        linkedin: "linkedin.com/in/johnsilva"
-      },
-      summary: "Senior Full Stack Developer with 5+ years of experience creating modern and scalable web applications. Specialized in React, Node.js and cloud technologies. Passionate about clean code, solid architecture and exceptional user experience.",
-      experience: [
-        {
-          title: "Senior Full Stack Developer",
-          company: "Tech Innovations Ltd",
-          period: "Jan 2022 - Present",
-          description: [
-            "Technical leadership of 5-developer team",
-            "React applications development with TypeScript",
-            "REST and GraphQL APIs implementation with Node.js",
-            "AWS applications deployment and maintenance",
-            "Performance improvements resulting in 40% faster loading times"
-          ]
+    
+      en: {
+        name: "Kayque Allan",
+        title: "Software Engineering Student",
+        contact: {
+          email: "kayqueallanf@gmail.com",
+          phone: "+55 (31) 99108-2537",
+          location: "Minas Gerais, Brazil",
+          github: "https://github.com/kayqueallan",
+          linkedin: "linkedin.com/in/kayqueallan"
         },
-        {
-          title: "Mid-level Front-end Developer",
-          company: "Digital Solutions",
-          period: "Mar 2020 - Dec 2021",
-          description: [
-            "Responsive interface development for 20+ clients",
-            "RESTful APIs integration and global state implementation",
-            "Performance optimization and SEO",
-            "Junior developers mentoring"
-          ]
+        summary: "I am a Software Engineering student at PUC Minas, passionate about technology and development. I have experience in academic and real-world projects, working in both front-end and back-end, with database and API integration. I stand out for my quick learning, commitment, organization, and teamwork, always seeking to evolve and create efficient solutions.",
+        
+        experience: [
+          {
+            title: "Business Partner – Freelancer",
+            company: "",
+            period: "2022 – 2023",
+            description: [
+              "Creation of visual designs and paid traffic management for small businesses.",
+              "Customer service, digital marketing strategies, and branding.",
+              "Development of skills in graphic design, communication, and organization."
+            ]
+          }
+        ],
+
+        projects: [
+          {
+            name: "PettEmCasa - Pet Hotel Management System",
+            link: "https://github.com/kayqueallan",
+            year: 2025,
+            status: "Completed",
+            description: [
+              "Full system development for pet hotel management.",
+              "Features: client and pet registration, bookings, login, and admin dashboard.",
+              "Responsive and intuitive interface for admins and customers."
+            ],
+            technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL"]
+          },
+          {
+            name: "Kallyer Transporte – Business Management System",
+            link: "",
+            year: 2025,
+            status: "In progress",
+            description: [
+              "System for a transport company focused on internal control and easy access to services.",
+              "Features in development: trip control, financial management by mileage, and admin dashboard integration."
+            ],
+            technologies: ["React", "CSS", "Tailwind CSS", "Node.js", "PostgreSQL", "Route API"]
+          }
+        ],
+    
+        education: [
+          {
+            degree: "Bachelor's Degree in Software Engineering",
+            school: "Pontifical Catholic University of Minas Gerais (PUC MINAS)",
+            period: "2023 - Present",
+            details: "Focus on software development with a solid foundation in programming, modeling, testing, databases, and cloud computing."
+          }
+        ],
+    
+        skills: {
+          frontend: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"],
+          backend: ["Java", "Node.js", "Python", "Spring Boot", "SQL", "PostgreSQL"],
+          tools: ["Git", "Docker", "AWS", "Figma"]
         },
-        {
-          title: "Junior Developer",
-          company: "StartupTech",
-          period: "Jun 2019 - Feb 2020",
-          description: [
-            "Feature development for SaaS platform",
-            "Legacy applications maintenance and bug fixes",
-            "Active participation in agile methodologies (Scrum)"
-          ]
-        }
-      ],
-      education: [
-        {
-          degree: "Bachelor's in Computer Science",
-          school: "University of São Paulo (USP)",
-          period: "2015 - 2019",
-          details: "Solid formation in algorithms, data structures and software engineering"
-        }
-      ],
-      skills: {
-        frontend: ["React", "TypeScript", "Next.js", "Vue.js", "HTML5", "CSS3", "Tailwind CSS"],
-        backend: ["Node.js", "Python", "Express", "FastAPI", "PostgreSQL", "MongoDB"],
-        tools: ["Git", "Docker", "AWS", "Jest", "Cypress", "Figma"]
-      },
-      languages: [
-        { language: "Portuguese", level: "Native" },
-        { language: "English", level: "Advanced" },
-        { language: "Spanish", level: "Intermediate" }
-      ]
-    }
-  };
+    
+        languages: [
+          { language: "Portuguese", level: "Native" },
+          { language: "English", level: "Intermediate" },
+          { language: "Spanish", level: "Basic" }
+        ],
+    
+        complementaryCourses: [
+          { name: "Web Development: HTML & CSS", provider: "B7Web", status: "Completed" },
+          { name: "JavaScript", provider: "B7Web", status: "Completed" },
+          { name: "React / TypeScript / Node.js", provider: "B7Web", status: "In progress" },
+          { name: "Java and Databases", provider: "DevDojo", status: "Completed" },
+          { name: "Linux", provider: "Udemy", status: "Completed" },
+          { name: "English / Spanish", provider: "Fluency Academy", status: "In progress" }
+        ],
+    
+      }
+    };
+    
+  
 
   const currentData = resumeData[language];
+
+  const generatePDF = async () => {
+    if (!resumeRef.current) return;
+    
+    setIsGeneratingPDF(true);
+    
+    try {
+      // Configurações otimizadas para melhor qualidade e formatação
+      const canvas = await html2canvas(resumeRef.current, {
+        scale: 1.5, // Escala otimizada para qualidade vs performance
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff', // Fundo branco para melhor legibilidade
+        width: 800, // Largura fixa para melhor controle
+        height: undefined, // Altura automática
+        logging: false,
+        removeContainer: true,
+        foreignObjectRendering: false,
+        imageTimeout: 15000,
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 800,
+        windowHeight: resumeRef.current.scrollHeight,
+        onclone: (clonedDoc) => {
+          // Aplicar estilos específicos para PDF com texto preto para melhor legibilidade
+          const clonedElement = clonedDoc.querySelector('[data-resume-content]') as HTMLElement;
+          if (clonedElement) {
+            clonedElement.style.width = '800px';
+            clonedElement.style.maxWidth = '800px';
+            clonedElement.style.margin = '0';
+            clonedElement.style.padding = '40px';
+            // Aplicar fundo branco e texto preto para melhor legibilidade
+            clonedElement.style.backgroundColor = '#ffffff';
+            clonedElement.style.color = '#000000';
+            clonedElement.style.fontFamily = 'Arial, sans-serif';
+            clonedElement.style.fontSize = '14px';
+            clonedElement.style.lineHeight = '1.6';
+            
+            // Garantir que todo o conteúdo seja visível
+            clonedElement.style.overflow = 'visible';
+            clonedElement.style.height = 'auto';
+            clonedElement.style.minHeight = 'auto';
+            
+            // Aplicar texto preto a todos os elementos para garantir legibilidade
+            const allTextElements = clonedElement.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div, li');
+            allTextElements.forEach((el) => {
+              const element = el as HTMLElement;
+              element.style.color = '#000000';
+              element.style.fontWeight = element.tagName.match(/^h[1-6]$/) ? 'bold' : 'normal';
+            });
+            
+            // Manter títulos com destaque mas legíveis
+            const titles = clonedElement.querySelectorAll('h1, h2, h3, h4, h5, h6');
+            titles.forEach((title) => {
+              const titleElement = title as HTMLElement;
+              titleElement.style.color = '#1e40af'; // Azul escuro para títulos
+              titleElement.style.fontWeight = 'bold';
+              titleElement.style.borderBottom = '2px solid #1e40af';
+              titleElement.style.paddingBottom = '8px';
+              titleElement.style.marginBottom = '16px';
+            });
+          }
+        }
+      });
+
+      // Criar PDF
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const imgData = canvas.toDataURL('image/png', 1.0);
+      
+      // Dimensões do PDF A4
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      
+      // Calcular dimensões da imagem para caber no PDF
+      const imgWidth = pdfWidth - 20; // Margem de 10mm em cada lado
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      // Adicionar fundo branco à primeira página
+      pdf.setFillColor(255, 255, 255);
+      pdf.rect(0, 0, pdfWidth, pdfHeight, 'F');
+      
+      // Adicionar primeira página
+      pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+      
+      // Se a altura da imagem for maior que uma página, adicionar novas páginas
+      let heightLeft = imgHeight;
+      let position = 0;
+      let pageCount = 1;
+      
+      while (heightLeft > (pdfHeight - 20)) { // Mudança para > para incluir todo o conteúdo
+        position = heightLeft - (pdfHeight - 20);
+        pdf.addPage();
+        pageCount++;
+        
+        // Adicionar fundo branco à nova página
+        pdf.setFillColor(255, 255, 255);
+        pdf.rect(0, 0, pdfWidth, pdfHeight, 'F');
+        
+        // Ajustar posição para evitar cortes
+        const adjustedPosition = Math.max(0, -position + 10);
+        pdf.addImage(imgData, 'PNG', 10, adjustedPosition, imgWidth, imgHeight);
+        heightLeft -= (pdfHeight - 20);
+      }
+      
+      console.log(`PDF gerado com ${pageCount} páginas`);
+      
+      // Baixar o PDF
+      const timestamp = new Date().toISOString().split('T')[0];
+      const fileName = `Kayque_Allan_Resume_${language.toUpperCase()}_${timestamp}.pdf`;
+      pdf.save(fileName);
+      
+    } catch (error) {
+      console.error('Erro ao gerar PDF:', error);
+      alert('Erro ao gerar o PDF. Tente novamente.');
+    } finally {
+      setIsGeneratingPDF(false);
+    }
+  };
 
   return (
     <section id="resume" className="py-20 bg-section-bg">
@@ -171,7 +329,7 @@ const ResumeDocument = () => {
 
         {/* Resume Document */}
         <div className="max-w-4xl mx-auto">
-          <Card className="p-8 md:p-12 bg-card/80 backdrop-blur-sm border-border/50 shadow-glow animate-fade-in">
+          <Card ref={resumeRef} data-resume-content className="p-8 md:p-12 bg-card/80 backdrop-blur-sm border-border/50 shadow-glow animate-fade-in">
             {/* Header */}
             <div className="border-b border-border pb-6 mb-8">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
@@ -237,6 +395,50 @@ const ResumeDocument = () => {
               </div>
             </div>
 
+            {/* Projects */}
+            {currentData.projects && currentData.projects.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-primary mb-6">
+                  {language === 'pt' ? 'Projetos (selecionados)' : 'Selected Projects'}
+                </h3>
+                <div className="space-y-6">
+                  {currentData.projects.map((project, index) => (
+                    <div key={index} className="border-l-2 border-purple-600 pl-6 hover-scale">
+                      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                        <h4 className="text-lg font-bold text-foreground">
+                          {project.name}
+                          {project.link && (
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="ml-2 text-accent text-sm underline"
+                            >
+                              [GitHub]
+                            </a>
+                          )}
+                        </h4>
+                        <span className="text-sm text-accent font-medium">
+                          {project.year} ({project.status})
+                        </span>
+                      </div>
+                      <ul className="space-y-1 text-muted-foreground mb-2">
+                        {project.description.map((item, itemIndex) => (
+                          <li key={itemIndex} className="flex items-start gap-2">
+                            <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-muted-foreground text-sm">
+                        <strong className="text-foreground">Tecnologias:</strong> {project.technologies.join(', ')}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Education */}
             <div className="mb-8">
               <h3 className="text-xl font-bold text-primary mb-4">
@@ -253,6 +455,27 @@ const ResumeDocument = () => {
                 </div>
               ))}
             </div>
+
+
+            {/* Complementary Courses */}
+              <div className="mt-8">
+                <h3 className="text-xl font-bold text-primary mb-4">
+                  {language === 'pt' ? 'Cursos Complementares' : 'Complementary Courses'}
+                </h3>
+                <ul className="space-y-3 text-muted-foreground">
+                  {currentData.complementaryCourses.map((course, index) => (
+                    <li key={index} className="border-l-2 border-purple-600 pl-6 hover-scale">
+                      <p className="font-semibold text-foreground">{course.name}</p>
+                      <p className="text-sm">
+                        {course.provider} — <span className="italic">{course.status}</span>
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <br />
+
 
             {/* Skills */}
             <div className="mb-8">
@@ -295,6 +518,8 @@ const ResumeDocument = () => {
               </div>
             </div>
 
+            
+
             {/* Languages */}
             <div>
               <h3 className="text-xl font-bold text-primary mb-4">
@@ -310,14 +535,28 @@ const ResumeDocument = () => {
               </div>
             </div>
           </Card>
+
+          
+
           
           <div className="text-center mt-8">
             <Button 
+              onClick={generatePDF}
+              disabled={isGeneratingPDF}
               size="lg"
-              className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 gap-2 animate-glow"
+              className="bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 gap-2 animate-glow disabled:opacity-50"
             >
-              <Download className="w-5 h-5" />
-              {language === 'pt' ? 'Baixar PDF' : 'Download PDF'}
+              {isGeneratingPDF ? (
+                <>
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                  {language === 'pt' ? 'Gerando PDF...' : 'Generating PDF...'}
+                </>
+              ) : (
+                <>
+                  <Download className="w-5 h-5" />
+                  {language === 'pt' ? 'Baixar PDF' : 'Download PDF'}
+                </>
+              )}
             </Button>
           </div>
         </div>
@@ -325,5 +564,7 @@ const ResumeDocument = () => {
     </section>
   );
 };
+
+
 
 export default ResumeDocument;

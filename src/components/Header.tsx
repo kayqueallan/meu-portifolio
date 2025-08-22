@@ -27,9 +27,6 @@ const Header = () => {
             <div className="p-2 rounded-lg bg-gradient-to-r from-primary to-accent group-hover:shadow-glow transition-all duration-300">
               <Code2 className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Kayque
-            </span>
           </Link>
           
           <div className="hidden md:flex space-x-8">
@@ -41,7 +38,7 @@ const Header = () => {
                   : 'text-foreground/80 hover:text-primary'
               }`}
             >
-              Home
+              Sobre mim
             </Link>
             <Link 
               to="/curriculo"

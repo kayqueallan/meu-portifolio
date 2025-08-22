@@ -6,59 +6,27 @@ import { ExternalLink, Github } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "E-commerce Platform",
-      description: "Plataforma completa de e-commerce com sistema de pagamentos, gestão de produtos e dashboard administrativo.",
-      image: "/placeholder.svg",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      github: "#",
+      title: "Pet Em Casa (Hotel para Pet)",
+      description: "Pet em Casa é um sistema web para gerenciar hospedagens de pets, registrar dados, controlar pertences e automatizar atendimentos, trazendo mais organização e confiança para tutores e equipe.",
+      image: "/pettemcasa.png",
+      technologies: ["JavaScript", "Node.js", "PostgreSQL", "HTML", "CSS"],
+      github: "https://github.com/kayqueallan/PettEmCasa?tab=readme-ov-file",
+      demo: "https://pettemcasa.vercel.app/",
+      featured: true
+    },
+    
+    
+    {
+      title: "Dropfleet",
+      description: "A Dropfleet é uma plataforma para gestão e rastreamento de pedidos em tempo real, feita para donos de e-commerce e dropshipping. Com interface intuitiva e integração global, facilita o acompanhamento de entregas do pedido até o cliente final.",
+      image: "/dropfleet.png",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/kayqueallan/DropFleet",
       demo: "#",
       featured: true
     },
-    {
-      title: "Task Management App",
-      description: "Aplicativo de gerenciamento de tarefas com funcionalidades colaborativas e sincronização em tempo real.",
-      image: "/placeholder.svg",
-      technologies: ["Vue.js", "Firebase", "Vuetify"],
-      github: "#",
-      demo: "#",
-      featured: false
-    },
-    {
-      title: "Weather Dashboard",
-      description: "Dashboard meteorológico com previsões detalhadas, mapas interativos e alertas personalizados.",
-      image: "/placeholder.svg",
-      technologies: ["React", "D3.js", "OpenWeather API"],
-      github: "#",
-      demo: "#",
-      featured: false
-    },
-    {
-      title: "Social Media Analytics",
-      description: "Ferramenta de análise de mídias sociais com métricas avançadas, relatórios automáticos e insights de engajamento.",
-      image: "/placeholder.svg",
-      technologies: ["Python", "React", "Chart.js", "API Integration"],
-      github: "#",
-      demo: "#",
-      featured: true
-    },
-    {
-      title: "Portfolio Website",
-      description: "Website portfólio responsivo com animações suaves, otimizado para SEO e performance.",
-      image: "/placeholder.svg",
-      technologies: ["React", "TypeScript", "Tailwind CSS"],
-      github: "#",
-      demo: "#",
-      featured: false
-    },
-    {
-      title: "Learning Management System",
-      description: "Sistema completo de gerenciamento de aprendizado com cursos online, quizzes e acompanhamento de progresso.",
-      image: "/placeholder.svg",
-      technologies: ["Next.js", "Prisma", "PostgreSQL", "Nextauth"],
-      github: "#",
-      demo: "#",
-      featured: true
-    }
+
+
   ];
 
   const featuredProjects = projects.filter(project => project.featured);
@@ -72,13 +40,12 @@ const Projects = () => {
             Projetos
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Alguns dos projetos que desenvolvi recentemente
-          </p>
+          Desenvolvo soluções tecnológicas eficientes que transformam desafios complexos em resultados concretos e escaláveis.          </p>
         </div>
 
         {/* Featured Projects */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold mb-8 text-center text-primary">Projetos em Destaque</h3>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-strong transition-all duration-300 hover:-translate-y-2 group">
@@ -116,40 +83,6 @@ const Projects = () => {
                       </a>
                     </Button>
                   </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Other Projects */}
-        <div>
-          <h3 className="text-2xl font-bold mb-8 text-center text-primary">Outros Projetos</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherProjects.map((project, index) => (
-              <Card key={index} className="p-6 hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
-                <h4 className="text-lg font-bold mb-3 text-foreground">{project.title}</h4>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="outline" className="text-xs border-primary/30 text-primary">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                
-                <div className="flex gap-2">
-                  <Button variant="ghost" size="sm" asChild className="gap-1 p-2">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-3 h-3" />
-                    </a>
-                  </Button>
-                  <Button variant="ghost" size="sm" asChild className="gap-1 p-2">
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  </Button>
                 </div>
               </Card>
             ))}

@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, MessageCircle, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getFormspreeEndpoint, isFormspreeConfigured } from "@/config/formspree";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,16 +14,48 @@ const Contact = () => {
     subject: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Obtém o endpoint do Formspree da configuração
+  const FORMSPREE_ENDPOINT = getFormspreeEndpoint();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Mensagem enviada!",
-      description: "Obrigado pelo contato. Responderei em breve!",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Mensagem enviada com sucesso!",
+          description: "Obrigado pelo contato. Responderei em breve!",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        throw new Error("Erro ao enviar mensagem");
+      }
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar mensagem",
+        description: "Ocorreu um erro. Tente novamente ou entre em contato diretamente pelo email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -67,7 +100,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <p className="text-muted-foreground">joao.silva@email.com</p>
+                    <p className="text-muted-foreground">kayqueallanf@gmail.com</p>
                   </div>
                 </div>
                 
@@ -77,7 +110,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Telefone</p>
-                    <p className="text-muted-foreground">+55 (11) 99999-9999</p>
+                    <p className="text-muted-foreground">+55 (31) 99108-2537</p>
                   </div>
                 </div>
                 
@@ -87,7 +120,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Localização</p>
-                    <p className="text-muted-foreground">São Paulo, SP</p>
+                    <p className="text-muted-foreground">Minas Gerais, SP</p>
                   </div>
                 </div>
               </div>
@@ -101,7 +134,7 @@ const Contact = () => {
                     className="gap-2 hover-scale"
                     asChild
                   >
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/kayqueallan" target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4" />
                       GitHub
                     </a>
@@ -112,7 +145,7 @@ const Contact = () => {
                     className="gap-2 hover-scale"
                     asChild
                   >
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://linkedin.com/in/kayqueallan" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-4 h-4" />
                       LinkedIn
                     </a>
@@ -124,6 +157,13 @@ const Contact = () => {
 
           {/* Contact Form */}
           <Card className="p-8 bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-glow transition-all duration-300 animate-fade-in">
+            {!isFormspreeConfigured() && (
+              <div className="mb-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                <p className="text-yellow-600 dark:text-yellow-400 text-sm">
+                  ⚠️ Formspree não configurado. Configure o endpoint em <code className="bg-yellow-500/20 px-2 py-1 rounded">src/config/formspree.ts</code>
+                </p>
+              </div>
+            )}
             <h3 className="text-2xl font-bold text-primary mb-6 flex items-center gap-2">
               <Send className="w-6 h-6" />
               Enviar Mensagem
@@ -142,6 +182,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="Seu nome completo"
                     required
+                    disabled={isSubmitting}
                     className="bg-background/50 border-border focus:border-primary transition-colors"
                   />
                 </div>
@@ -156,6 +197,7 @@ const Contact = () => {
                     onChange={handleInputChange}
                     placeholder="seu@email.com"
                     required
+                    disabled={isSubmitting}
                     className="bg-background/50 border-border focus:border-primary transition-colors"
                   />
                 </div>
@@ -172,6 +214,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Assunto da sua mensagem"
                   required
+                  disabled={isSubmitting}
                   className="bg-background/50 border-border focus:border-primary transition-colors"
                 />
               </div>
@@ -187,6 +230,7 @@ const Contact = () => {
                   placeholder="Descreva seu projeto ou dúvida..."
                   required
                   rows={6}
+                  disabled={isSubmitting}
                   className="bg-background/50 border-border focus:border-primary transition-colors resize-none"
                 />
               </div>
@@ -194,10 +238,20 @@ const Contact = () => {
               <Button 
                 type="submit" 
                 size="lg" 
-                className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 gap-2"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-primary to-accent hover:shadow-glow transition-all duration-300 gap-2 disabled:opacity-50"
               >
-                <Send className="w-5 h-5" />
-                Enviar Mensagem
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Enviar Mensagem
+                  </>
+                )}
               </Button>
             </form>
           </Card>
