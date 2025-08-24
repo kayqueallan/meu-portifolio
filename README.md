@@ -1,6 +1,7 @@
 # Kayque Allan - Portfólio
 
 Este é um projeto de portfólio desenvolvido para o Laboratório de Desenvolvimento de Software.
+[Link do meu portifólio](https://portifolio-nine-phi-97.vercel.app/)
 
 ## Tecnologias Utilizadas
 
@@ -109,7 +110,7 @@ Para configurar e executar o projeto localmente, siga os passos abaixo:
 
 O site está publicado e pode ser acessado através do seguinte link:
 
-[Kayque Allan - Portfólio Online](https://portfolio-tiagoba.vercel.app)
+[Kayque Allan - Portfólio Online]([https://portfolio-tiagoba.vercel.app](https://portifolio-nine-phi-97.vercel.app/))
 
 ## Wireframes
 
